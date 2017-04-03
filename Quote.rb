@@ -22,13 +22,21 @@ class Quote < Multilinguist
     @known_quote = []
   end
 
+  def say_in_local_language(msg)
+    super(msg)
+  end
+
+  def travel_to(country_name)
+    super
+  end
+
   def learn_quote
     @known_quote << @@quote_store[rand(0..@@quote_store.length-1)]
   end
 
   def spit_quote
-    quote_selector =  rand(0..@@quote_store.length)
-    quote = @@quote_store[quote_selector]
+    quote_selector =  rand(0..@known_quote.length-1)
+    quote = @known_quote[quote_selector]
     return say_in_local_language(quote)
   end
 
