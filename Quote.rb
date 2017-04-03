@@ -1,4 +1,4 @@
-require "./MathGenius"
+require "./multilinguist"
 
 @@quote_store = [
   "The saddest aspect of life right now is that science gathers knowledge
@@ -15,10 +15,22 @@ require "./MathGenius"
   Three, if you are lucky enough to find love, remember it is there and don't throw it away."
 ]
 
-class Quote
-  super
+class Quote < Multilinguist
 
-  
+  def initialize
+    super
+    @known_quote = []
+  end
+
+  def learn_quote
+    @known_quote << @@quote_store[rand(0..@@quote_store.length-1)]
+  end
+
+  def spit_quote
+    quote_selector =  rand(0..@@quote_store.length)
+    quote = @@quote_store[quote_selector]
+    return say_in_local_language(quote)
+  end
 
 
 end
