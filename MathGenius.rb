@@ -1,30 +1,29 @@
 require "./multilinguist.rb"
+# require "pry"
 
-class MathGenius
+class MathGenius < Multilinguist
 
-  def initialize(num_array)
+  def initialize
     super
-    @num_array = num_array
+    @num_array = []
   end
 
-  def add
+  def travel_to(country_name)
+    super(country_name)
+  end
+
+  def say_in_local_language(msg)
+    super(msg)
+  end
+
+  def add(num_array)
     total = 0
+    puts total
+    @num_array = num_array
     @num_array.each do |number|
       total += number
     end
-    return total
-  end
-
-  def travel_to
-    super
-  end
-
-  def say_in_local_language
-    super
-  end
-
-  def multilang_add
-    say_in_local_language("Your sum is #{@num_array.add}")
+    return say_in_local_language("Your sum is #{total}")
   end
 
 
